@@ -28,7 +28,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+          path: source    # 指定目录
 
+      - name: Verify Git repository
+        run: |
+          cd source
+          git status
+          git log -1 --oneline
+          
       - name: Run Claude PR Action
         uses: anthropics/claude-code-action@beta
         env:
