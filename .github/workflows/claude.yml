@@ -24,20 +24,13 @@ jobs:
       issues: read
       id-token: write
     steps:
-      - name: Checkout repository
+      - name: 拉取仓库
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
-          path: source
-          # 指定目录
 
-      - name: Verify Git repository
-        run: |
-          cd source
-          git status
-          git log -1 --oneline
           
-      - name: Run Claude PR Action
+      - name: 执行Claude PR操作
         uses: anthropics/claude-code-action@beta
         env:
           ANTHROPIC_BASE_URL: https://api.moonshot.cn/anthropic
